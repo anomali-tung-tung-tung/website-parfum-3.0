@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Keranjang - MAHA PARFUME</title>
+  <link rel="stylesheet" href="/css/cart.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">MAHA PARFUME</div>
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../html/homepage.html">Home</a></li>
+      <li><a href="../html/products.html">Products</a></li>
+      <li><a href="#">Collections</a></li>
+      <li><a href="../html/aboutweb2.html">About</a></li>
+      <li><a href="../html/contact.html">Contact</a></li>
+      <li><a href="../html/teams.html">Teams</a></li>
+    </ul>
+  </nav>
+
+  <!-- Keranjang -->
+  <main class="cart-container">
+    <h2>Keranjang Belanja</h2>
+    <div id="cart-items"></div>
+    <div class="cart-summary">
+      <p><strong>Total:</strong> Rp <span id="cart-total">0</span></p>
+      <button onclick="checkout()">Checkout</button>
+    </div>
+  </main>
+
+  
+<script src="/js/navbar.js"></script> <!-- ini untuk hamburger menu -->
+
+  <script src="/js/cart.js"></script>
+
+</body>
+</html>

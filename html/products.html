@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAHA PARFUME</title>
+    <link rel="stylesheet" href="../css/product.css">
+</head>
+<body>
+
+
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">MAHA PARFUME</div>
+      <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+      </div>
+      <ul class="nav-links">
+          <li><a href="../html/homepage.html">Home</a></li>
+          <li><a href="../html/products.html">Products</a></li>
+          <li><a href="#">Collections</a></li>
+          <li><a href="../html/aboutweb2.html">About</a></li>
+          <li><a href="../html/contact.html">Contact</a></li>
+          <li><a href="../html/teams.html">Teams</a></li>
+      </ul>
+  </nav>
+
+    <!-- Container untuk kartu-kartu -->
+    <div class="card-container">
+        <!-- Card 1 -->
+        <section class="card">
+            <img src="/asssets/pg2.jpg" alt="Eau de Parfum 1">
+            <div class="card__content">
+              <p class="card__title">Pragos (50ml)</p>
+              <p class="card__description">Rp 200.000</p>
+              <button type="button" class="button" id="addItemBtn1">
+                <span class="button__text">Add Item</span>
+                <span class="button__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
+                    <line y2="19" y1="5" x2="12" x1="12"></line>
+                    <line y2="12" y1="12" x2="19" x1="5"></line>
+                  </svg>
+                </span>
+              </button>
+            </div>
+        </section>
+
+        <!-- Card 2 -->
+        <section class="card">
+            <img src="/asssets/pg 1.jpg" alt="Eau de Parfum 2">
+            <div class="card__content">
+              <p class="card__title">Santanos (50ml)</p>
+              <p class="card__description">Rp 500.000</p>
+              <button type="button" class="button" id="addItemBtn2">
+                <span class="button__text">Add Item</span>
+                <span class="button__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
+                    <line y2="19" y1="5" x2="12" x1="12"></line>
+                    <line y2="12" y1="12" x2="19" x1="5"></line>
+                  </svg>
+                </span>
+              </button>
+            </div>
+        </section>
+
+        <!-- Card 3 -->
+        <section class="card">
+            <img src="/asssets/pg3.jpg" alt="Eau de Parfum 3">
+            <div class="card__content">
+              <p class="card__title">Alfatos (50ml)</p>
+              <p class="card__description">Rp 190.000</p>
+              <button type="button" class="button" id="addItemBtn3">
+                <span class="button__text">Add Item</span>
+                <span class="button__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
+                    <line y2="19" y1="5" x2="12" x1="12"></line>
+                    <line y2="12" y1="12" x2="19" x1="5"></line>
+                  </svg>
+                </span>
+              </button>
+            </div>
+        </section>
+
+        <!-- Card 4 -->
+        <section class="card">
+            <img src="/asssets/pg4.jpg" alt="Eau de Parfum 4">
+            <div class="card__content">
+              <p class="card__title">Hibbos (50ml)</p>
+              <p class="card__description">Rp 90.000</p>
+              <button type="button" class="button" id="addItemBtn4">
+                <span class="button__text">Add Item</span>
+                <span class="button__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg">
+                <line y2="19" y1="5" x2="12" x1="12"></line>
+                <line y2="12" y1="12" x2="19" x1="5"></line>
+              </svg>
+            </span>
+          </button>
+        </div>
+    </section>
+</div>
+
+    
+    <!-- Popup -->
+    <div class="popup" id="popup">
+      <div class="popup__content">
+        <div class="popup__text">
+          <p>Item telah ditambahkan ke keranjang!</p>
+        </div>
+        <button class="btn popup__btn" onclick="closePopup()">Tutup</button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <!--<footer>
+      <div class="footer-container">
+          <div class="footer-brand">
+              <h2>MAHA PARFUME</h2>
+              <p>Copyright © 2020 Landify UI Kit. All rights reserved</p>
+          </div>
+          <div class="footer-links">
+              <div>
+                  <h3>Company</h3>
+                  <ul>
+                      <li><a href="#">About us</a></li>
+                      <li><a href="#">Blog</a></li>
+                      <li><a href="#">Contact us</a></li>
+                      <li><a href="#">Pricing</a></li>
+                      <li><a href="#">Testimonials</a></li>
+                  </ul>
+              </div>
+              <div>
+                  <h3>Support</h3>
+                  <ul>
+                      <li><a href="#">Help center</a></li>
+                      <li><a href="#">Terms of service</a></li>
+                      <li><a href="#">Legal</a></li>
+                      <li><a href="#">Privacy policy</a></li>
+                      <li><a href="#">Status</a></li>
+                  </ul>
+              </div>
+          </div>
+          <div class="subscribe">
+              <h3>Stay up to date</h3>
+              <input type="email" placeholder="Your email address">
+              <button>→</button>
+          </div>
+      </div>
+  </footer>-->
+  <footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Company</h3>
+            <ul>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Testimonials</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Support</h3>
+            <ul>
+                <li><a href="#">Help center</a></li>
+                <li><a href="#">Terms of service</a></li>
+                <li><a href="#">Legal</a></li>
+                <li><a href="#">Privacy policy</a></li>
+                <li><a href="#">Status</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Stay Updated</h3>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="/https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2023 MAHA PARFUME. All rights reserved.</p>
+    </div>
+</footer>
+
+    <!-- Hubungkan JavaScript -->
+    <script src="../js/product.js"></script>
+
+</body>
+</html>
