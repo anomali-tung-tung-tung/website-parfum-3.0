@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
     const cartContainer = document.getElementById('cart-items');
     const cartTotal = document.getElementById('cart-total');
-  
     let total = 0;
     cartItems.forEach((item, index) => {
       const itemEl = document.createElement('div');
@@ -18,10 +17,14 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
       `;
       cartContainer.appendChild(itemEl);
-      total += item.price;
+      
+      // Perbaiki di sini
+      total += parseInt(item.price.replace(/\./g, ''));
     });
-  
-    cartTotal.textContent = total.toLocaleString('id-ID');
+    
+    // Biar ada "Rp " di depan total juga
+    cartTotal.textContent = ` ${total.toLocaleString('id-ID')}`;
+    
   
     // === Hamburger Menu ===
     const menuToggle = document.getElementById('menu-toggle');
