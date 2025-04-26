@@ -1,16 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Function to show popup
     function showPopup() {
         const popup = document.getElementById('popup');
         if (popup) {
             popup.style.display = 'flex';
             setTimeout(() => {
                 popup.style.display = 'none';
-            }, 3000); // Popup hilang setelah 3 detik
+            }, 3000);
         }
     }
 
-    // Function to close popup
     function closePopup() {
         const popup = document.getElementById('popup');
         if (popup) {
@@ -18,37 +16,66 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Event listeners for add item buttons
     const addItemButtons = document.querySelectorAll('.button[id^="addItemBtn"]');
     addItemButtons.forEach(button => {
-        button.addEventListener('click', () => {
+        button.addEventListener('click', async () => {
             const productCard = button.closest('.card');
             const product = {
-                name: productCard.querySelector('.card__title').textContent,
-                price: productCard.querySelector('.card__description').textContent.replace('Rp ', ''),
+                name: productCard.querySelector('.card__title').textContent.trim(),
+                price: productCard.querySelector('.card__description').textContent.replace('Rp ', '').trim(),
                 image: productCard.querySelector('img').src,
             };
-            addItemToCart(product); // Tambahkan produk ke keranjang
-            showPopup(); // Tampilkan popup
+
+            addItemToCart(product);
+            await saveToDatabase(product);
+            showPopup();
         });
     });
 
-    // Fungsi untuk menambahkan item ke keranjang (localStorage)
     function addItemToCart(product) {
         const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
         cartItems.push(product);
         localStorage.setItem('cart', JSON.stringify(cartItems));
     }
 
-    // Hamburger menu functionality
+    async function saveToDatabase(product) {
+        try {
+            const response = await fetch('/api/products');
+            const allProducts = await response.json();
+
+            console.log('Produk dari database:', allProducts);
+
+            const matchedProduct = allProducts.find(p => p.name.trim().toLowerCase() === product.name.toLowerCase());
+
+            if (matchedProduct) {
+                const res = await fetch('/api/cart', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        productId: matchedProduct._id,
+                        quantity: 1
+                    })
+                });
+
+                const result = await res.json();
+                console.log('Hasil simpan ke cart:', result);
+            } else {
+                console.warn('❗ Produk tidak cocok ditemukan di database:', product.name);
+            }
+        } catch (error) {
+            console.error('Gagal menyimpan ke database:', error);
+        }
+    }
+
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
-    
-    hamburger.addEventListener('click', function() {
+
+    hamburger.addEventListener('click', function () {
         this.classList.toggle('active');
         navLinks.classList.toggle('active');
-        
-        // Toggle hamburger animation
+
         const bars = this.querySelectorAll('.bar');
         if (this.classList.contains('active')) {
             bars[0].style.transform = 'translateY(8px) rotate(45deg)';
@@ -61,14 +88,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Dark mode functionality
     const themeToggle = document.getElementById('themeToggle');
 
     if (themeToggle) {
-        // Periksa apakah dark mode aktif sebelumnya
         if (localStorage.getItem('dark-mode') === 'enabled') {
             document.body.classList.add('dark-mode');
-            themeToggle.textContent = '☀'; // Mode Terang
+            themeToggle.textContent = '☀';
         }
 
         themeToggle.addEventListener('click', function () {
