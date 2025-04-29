@@ -324,16 +324,6 @@ footer {
         flex-wrap: wrap;
         justify-content: center;
     }
-
-    .register-btn {
-    background: #8b6f4f;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    }
-
     .footer-container {
         flex-direction: column;
         gap: 20px;
@@ -414,8 +404,7 @@ footer {
     .nav-icons {
         display: none;
     }
-    
-    
+     
     .logo {
         margin: 2;
     }

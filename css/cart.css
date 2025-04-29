@@ -152,21 +152,16 @@ body {
 
   .navbar {
     flex-direction: column;
+    display: flex;
     align-items: flex-start;
   }
-}
-
-/* Tambahan untuk hamburger menu */
-.menu-toggle {
-  display: none;
-  font-size: 26px;
-  color: white;
-  cursor: pointer;
 }
 
 /* Mobile responsive styles */
 @media (max-width: 768px) {
   .navbar {
+    display: flex;
+    justify-content: space-between;
     padding: 15px 20px;
   }
 
@@ -178,6 +173,9 @@ body {
   .logo {
     order: 2;
     margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .nav-icons {
@@ -186,7 +184,7 @@ body {
 
   .nav-links {
     position: fixed;
-    left: -100%;
+    left: -1000%;
     top: 80px;
     flex-direction: column;
     background-color: #fff;
