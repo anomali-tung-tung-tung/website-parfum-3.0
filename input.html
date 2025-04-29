@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Input Produk Parfum</title>
+</head>
+<body>
+  <h2>Tambah Produk Baru</h2>
+  <form id="formProduk">
+    <label>Nama Produk: <input type="text" id="name" required></label><br><br>
+    <label>Harga (Rp): <input type="number" id="price" required></label><br><br>
+    <label>Link Gambar: <input type="text" id="image" required></label><br><br>
+    <label>Deskripsi: <textarea id="description" required></textarea></label><br><br>
+    <button type="submit">Kirim</button>
+  </form>
+
+  <script>
+    document.getElementById("formProduk").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const data = {
+        name: document.getElementById("name").value,
+        price: document.getElementById("price").value,
+        image: document.getElementById("image").value,
+        description: document.getElementById("description").value,
+      };
+
+      const res = await fetch("/api/products", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+
+      const result = await res.json();
+      alert("Data berhasil dikirim: " + JSON.stringify(result));
+      document.getElementById("formProduk").reset();
+    });
+  </script>
+</body>
+</html>
