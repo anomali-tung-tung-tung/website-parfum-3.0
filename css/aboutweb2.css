@@ -415,12 +415,13 @@ footer {
         display: none;
     }
     
-    .hamburger {
-        margin-left: auto;
-    }
     
     .logo {
-        margin: 0;
+        margin: 2;
+    }
+    
+    .hamburger {
+        margin-left: auto;
     }
 }
 

@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // 1. **Navbar (Hamburger Menu)**
     // Hamburger menu functionality
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
@@ -19,6 +18,18 @@ document.addEventListener("DOMContentLoaded", function() {
             bars[1].style.opacity = '1';
             bars[2].style.transform = 'translateY(0) rotate(0)';
         }
+    });
+    
+    // Close menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+            const bars = hamburger.querySelectorAll('.bar');
+            bars[0].style.transform = 'translateY(0) rotate(0)';
+            bars[1].style.opacity = '1';
+            bars[2].style.transform = 'translateY(0) rotate(0)';
+        });
     });
 
     // 2. **Tombol Dark Mode**
