@@ -55,3 +55,19 @@ document.getElementById('addItemBtn3').addEventListener('click', () => {
 document.getElementById('addItemBtn4').addEventListener('click', () => {
   addToCart('Hibbos (50ml)', 90000);
 });
+
+document.getElementById('addItemBtn5').addEventListener('click', () => {
+  addToCart('Labratos (100ml)', 200000);
+});
+
+document.getElementById('addItemBtn6').addEventListener('click', () => {
+  addToCart('Arripous (50ml)', 75000);
+});
+
+document.getElementById('addItemBtn7').addEventListener('click', () => {
+  addToCart('Walidous (50ml)', 75000);
+});
+
+document.getElementById('addItemBtn8').addEventListener('click', () => {
+  addToCart('Dewwy (50ml)', 75000);
+});
