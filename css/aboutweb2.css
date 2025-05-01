@@ -119,15 +119,14 @@ body, p {
     width: 100%;
 }
 
-filosofi > p {
+.filosofi > p {
     max-width: 800px;
-    margin: 40px auto;
+    margin: 40px auto 20px auto;
     padding: 20px;
-    text-align: center;
+    text-align: justify;
     font-family: 'Lora', serif;
     line-height: 1.6;
     font-weight: 700;
-    margin-bottom: 20px;
     width: 80%;
 }
 .visi{
@@ -144,6 +143,16 @@ filosofi > p {
     font-weight: 700;
     text-align: center;
     margin-bottom: 20px;
+}
+
+.visi p {
+    font-size: 18px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+    font-family: 'Lora', serif;
+    line-height: 1,2;
+    font-weight: 500;
 }
 .misi {
     max-width: 800px;
@@ -174,6 +183,8 @@ filosofi > p {
     display: flex;
     align-items: flex-start;
     font-family: 'Lora', serif;
+    line-height: 1.2;
+    font-weight: 500;
 }
 
 .misi li::before {

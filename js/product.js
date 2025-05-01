@@ -1,73 +1,114 @@
-// Toggle dark mode
-const themeToggle = document.getElementById('themeToggle');
-themeToggle.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
-});
-
-// Popup control
-function openPopup() {
-  document.getElementById('popup').style.display = 'block';
-}
-
-function closePopup() {
-  document.getElementById('popup').style.display = 'none';
-}
-
-// Fungsi untuk menambahkan item ke cart (POST ke server)
-async function addToCart(productName, productPrice) {
-  try {
-    const response = await fetch('/api/cart', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        name: productName,
-        price: productPrice,
-        quantity: 1
-      })
-    });
-
-    if (response.ok) {
-      openPopup();
-    } else {
-      alert('Gagal menambahkan item ke keranjang!');
-    }
-  } catch (error) {
-    console.error('Error menambahkan item:', error);
-    alert('Terjadi kesalahan!');
+document.addEventListener('DOMContentLoaded', function () {
+  // Fungsi untuk menampilkan popup
+  function showPopup() {
+      const popup = document.getElementById('popup');
+      if (popup) {
+          popup.style.display = 'flex';
+      }
   }
-}
 
-// Pasang event listener ke setiap tombol Add Item
-document.getElementById('addItemBtn1').addEventListener('click', () => {
-  addToCart('Pragos (50ml)', 200000);
-});
+  // Fungsi untuk menutup popup
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+    // history.back();
+  }
 
-document.getElementById('addItemBtn2').addEventListener('click', () => {
-  addToCart('Santanos (50ml)', 500000);
-});
+  // Tambahkan event listener ke tombol tutup popup
+  const closePopupBtn = document.getElementById('closePopupBtn');
+  if (closePopupBtn) {
+      closePopupBtn.addEventListener('click', closePopup);
+  }
 
-document.getElementById('addItemBtn3').addEventListener('click', () => {
-  addToCart('Alfatos (50ml)', 190000);
-});
+  const addItemButtons = document.querySelectorAll('.button[id^="addItemBtn"]');
+  addItemButtons.forEach(button => {
+      button.addEventListener('click', async () => {
+          const productCard = button.closest('.card');
+          const product = {
+              name: productCard.querySelector('.card__title').textContent.trim(),
+              price: productCard.querySelector('.card__description').textContent.replace('Rp ', '').trim(),
+              image: productCard.querySelector('img').src,
+          };
 
-document.getElementById('addItemBtn4').addEventListener('click', () => {
-  addToCart('Hibbos (50ml)', 90000);
-});
+          addItemToCart(product);
+          await saveToDatabase(product);
+          showPopup();
+      });
+  });
 
-document.getElementById('addItemBtn5').addEventListener('click', () => {
-  addToCart('Labratos (100ml)', 200000);
-});
+  function addItemToCart(product) {
+      const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+      cartItems.push(product);
+      localStorage.setItem('cart', JSON.stringify(cartItems));
+  }
 
-document.getElementById('addItemBtn6').addEventListener('click', () => {
-  addToCart('Arripous (50ml)', 75000);
-});
+  async function saveToDatabase(product) {
+      try {
+          const response = await fetch('/api/products');
+          const allProducts = await response.json();
 
-document.getElementById('addItemBtn7').addEventListener('click', () => {
-  addToCart('Walidous (50ml)', 75000);
-});
+          console.log('Produk dari database:', allProducts);
 
-document.getElementById('addItemBtn8').addEventListener('click', () => {
-  addToCart('Dewwy (50ml)', 75000);
+          const matchedProduct = allProducts.find(p => p.name.trim().toLowerCase() === product.name.toLowerCase());
+
+          if (matchedProduct) {
+              const res = await fetch('/api/cart', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({
+                      productId: matchedProduct._id,
+                      quantity: 1
+                  })
+              });
+
+              const result = await res.json();
+              console.log('Hasil simpan ke cart:', result);
+          } else {
+              console.warn('❗ Produk tidak cocok ditemukan di database:', product.name);
+          }
+      } catch (error) {
+          console.error('Gagal menyimpan ke database:', error);
+      }
+  }
+
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+
+  hamburger.addEventListener('click', function () {
+      this.classList.toggle('active');
+      navLinks.classList.toggle('active');
+
+      const bars = this.querySelectorAll('.bar');
+      if (this.classList.contains('active')) {
+          bars[0].style.transform = 'translateY(8px) rotate(45deg)';
+          bars[1].style.opacity = '0';
+          bars[2].style.transform = 'translateY(-8px) rotate(-45deg)';
+      } else {
+          bars[0].style.transform = 'translateY(0) rotate(0)';
+          bars[1].style.opacity = '1';
+          bars[2].style.transform = 'translateY(0) rotate(0)';
+      }
+  });
+
+  const themeToggle = document.getElementById('themeToggle');
+
+  if (themeToggle) {
+      if (localStorage.getItem('dark-mode') === 'enabled') {
+          document.body.classList.add('dark-mode');
+          themeToggle.textContent = '☀';
+      }
+
+      themeToggle.addEventListener('click', function () {
+          document.body.classList.toggle('dark-mode');
+
+          if (document.body.classList.contains('dark-mode')) {
+              localStorage.setItem('dark-mode', 'enabled');
+              themeToggle.textContent = '☀';
+          } else {
+              localStorage.setItem('dark-mode', 'disabled');
+              themeToggle.textContent = '🌙';
+          }
+      });
+  }
 });
