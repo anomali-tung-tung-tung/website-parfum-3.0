@@ -240,10 +240,10 @@ body {
 }
 
 .card-2 {
-    border-top: 4px solid #64b5f6;
+    border-top: 4px solid #8d6e63; 
 }
 .card-2::before {
-    background-color: #e3f2fd;
+    background-color: #efebe9;
 }
 
 .card-3 {
@@ -251,6 +251,20 @@ body {
 }
 .card-3::before {
     background-color: #fce4ec;
+}
+
+.card-4 {
+    border-top: 4px solid #ffb74d;
+}
+.card-4::before {
+    background-color: #fff3e0;  
+}
+
+.card-5 {
+    border-top: 4px solid #4fc3f7; 
+}
+.card-5::before {
+    background-color: #e1f5fe;
 }
 
 .collection-card:hover {
