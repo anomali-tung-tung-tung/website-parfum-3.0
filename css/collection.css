@@ -97,6 +97,74 @@ html, body {
     transition: all 0.3s ease;
 }
 
+.description-container {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background: #fefaf6;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.aroma-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.aroma-card {
+    background-color: #fff;
+    border-left: 6px solid;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+    transition: transform 0.3s ease;
+    background: #fffdfc;
+}
+
+.aroma-card:hover {
+    transform: translateY(-8px);
+}
+
+.aroma-card.green {
+    border-color: #81c784;
+}
+
+.aroma-card.woody {
+    border-color: #a1887f;
+}
+
+.aroma-card.floral {
+    border-color: #f48fb1;
+}
+
+.aroma-card.sweet {
+    border-color: #ffb74d;
+}
+
+.aroma-card.aquatic {
+    border-color: #4fc3f7;
+}
+
+.aroma-card h3 {
+    margin-top: 0;
+    font-size: 1.4rem;
+}
+
+.aroma-card p {
+    margin: 0.5rem 0;
+}
+
+.season-badge {
+    display: inline-block;
+    margin-top: 0.8rem;
+    background-color: #f3f3f3;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
 /* ======= Footer ======= */
 .footer {
     background-color: #5d4037;

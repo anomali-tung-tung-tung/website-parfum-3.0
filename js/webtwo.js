@@ -73,27 +73,43 @@ document.addEventListener('DOMContentLoaded', function() {
     // Collection card hover effects (existing functionality)
     const collectionCards = document.querySelectorAll('.collection-card');
     const collectionBackground = document.querySelector('.collection-section-background');
-    
-    if (collectionCards.length && collectionBackground) {
-        collectionCards.forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                if (this.classList.contains('card-1')) {
-                    collectionBackground.style.backgroundColor = '#e8f5e9';
-                } else if (this.classList.contains('card-2')) {
-                    collectionBackground.style.backgroundColor = '#e3f2fd';
-                } else if (this.classList.contains('card-3')) {
-                    collectionBackground.style.backgroundColor = '#fce4ec';
-                }
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                collectionBackground.style.backgroundColor = 'transparent';
-            });
+
+if (collectionCards.length && collectionBackground) {
+    collectionCards.forEach(card => {
+        card.addEventListener('mouseenter', function () {
+            if (this.classList.contains('card-pragos')) {
+                collectionBackground.style.backgroundColor = '#e8f5e9';
+            } else if (this.classList.contains('card-santanos')) {
+                collectionBackground.style.backgroundColor = '#efebe9';
+            } else if (this.classList.contains('card-alfatos')) {
+                collectionBackground.style.backgroundColor = '#fce4ec';
+            } else if (this.classList.contains('card-hibbos')) {
+                collectionBackground.style.backgroundColor = '#f3e5f5';
+            } else if (this.classList.contains('card-labratos')) {
+                collectionBackground.style.backgroundColor = '#d7ccc8';
+            } else if (this.classList.contains('card-arriopus')) {
+                collectionBackground.style.backgroundColor = '#fff3e0';
+            } else if (this.classList.contains('card-walidous')) {
+                collectionBackground.style.backgroundColor = '#f1f8e9';
+            } else if (this.classList.contains('card-dewwy')) {
+                collectionBackground.style.backgroundColor = '#e1f5fe';
+            } else {
+                collectionBackground.style.backgroundColor = 'transparent'; // fallback
+            }
         });
-    }
+
+        card.addEventListener('mouseleave', function () {
+            collectionBackground.style.backgroundColor = 'transparent';
+        });
+    });
+}
+
 
     // Learn More button interactions (existing functionality)
-    const learnMoreButtons = document.querySelectorAll('.learn-more');
+    const params = new URLSearchParams(window.location.search);
+    const product = params.get('product'); // akan jadi "pragos"
+
+    /*const learnMoreButtons = document.querySelectorAll('.learn-more');
     if (learnMoreButtons.length) {
         learnMoreButtons.forEach(button => {
             button.addEventListener('click', function(e) {
@@ -103,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log(`Learn more about ${title}`);
             });
         });
-    }
+    }*/
 
     // Auth Modal Functionality (new functionality)
     const userIcon = document.querySelector('.fa-user')?.parentElement;
