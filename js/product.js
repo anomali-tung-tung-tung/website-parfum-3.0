@@ -1,111 +1,114 @@
 document.addEventListener('DOMContentLoaded', function () {
-    function showPopup() {
-        const popup = document.getElementById('popup');
-        if (popup) {
-            popup.style.display = 'flex';
-            setTimeout(() => {
-                popup.style.display = 'none';
-            }, 3000);
-        }
-    }
+  // Fungsi untuk menampilkan popup
+  function showPopup() {
+      const popup = document.getElementById('popup');
+      if (popup) {
+          popup.style.display = 'flex';
+      }
+  }
 
-    function closePopup() {
-        const popup = document.getElementById('popup');
-        if (popup) {
-            popup.style.display = 'none';
-        }
-    }
+  // Fungsi untuk menutup popup
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+    // history.back();
+  }
 
-    const addItemButtons = document.querySelectorAll('.button[id^="addItemBtn"]');
-    addItemButtons.forEach(button => {
-        button.addEventListener('click', async () => {
-            const productCard = button.closest('.card');
-            const product = {
-                name: productCard.querySelector('.card__title').textContent.trim(),
-                price: productCard.querySelector('.card__description').textContent.replace('Rp ', '').trim(),
-                image: productCard.querySelector('img').src,
-            };
+  // Tambahkan event listener ke tombol tutup popup
+  const closePopupBtn = document.getElementById('closePopupBtn');
+  if (closePopupBtn) {
+      closePopupBtn.addEventListener('click', closePopup);
+  }
 
-            addItemToCart(product);
-            await saveToDatabase(product);
-            showPopup();
-        });
-    });
+  const addItemButtons = document.querySelectorAll('.button[id^="addItemBtn"]');
+  addItemButtons.forEach(button => {
+      button.addEventListener('click', async () => {
+          const productCard = button.closest('.card');
+          const product = {
+              name: productCard.querySelector('.card__title').textContent.trim(),
+              price: productCard.querySelector('.card__description').textContent.replace('Rp ', '').trim(),
+              image: productCard.querySelector('img').src,
+          };
 
-    function addItemToCart(product) {
-        const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-        cartItems.push(product);
-        localStorage.setItem('cart', JSON.stringify(cartItems));
-    }
+          addItemToCart(product);
+          await saveToDatabase(product);
+          showPopup();
+      });
+  });
 
-    async function saveToDatabase(product) {
-        try {
-            const response = await fetch('/api/products');
-            const allProducts = await response.json();
+  function addItemToCart(product) {
+      const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+      cartItems.push(product);
+      localStorage.setItem('cart', JSON.stringify(cartItems));
+  }
 
-            console.log('Produk dari database:', allProducts);
+  async function saveToDatabase(product) {
+      try {
+          const response = await fetch('/api/products');
+          const allProducts = await response.json();
 
-            const matchedProduct = allProducts.find(p => p.name.trim().toLowerCase() === product.name.toLowerCase());
+          console.log('Produk dari database:', allProducts);
 
-            if (matchedProduct) {
-                const res = await fetch('/api/cart', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        productId: matchedProduct._id,
-                        quantity: 1
-                    })
-                });
+          const matchedProduct = allProducts.find(p => p.name.trim().toLowerCase() === product.name.toLowerCase());
 
-                const result = await res.json();
-                console.log('Hasil simpan ke cart:', result);
-            } else {
-                console.warn('❗ Produk tidak cocok ditemukan di database:', product.name);
-            }
-        } catch (error) {
-            console.error('Gagal menyimpan ke database:', error);
-        }
-    }
+          if (matchedProduct) {
+              const res = await fetch('/api/cart', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({
+                      productId: matchedProduct._id,
+                      quantity: 1
+                  })
+              });
 
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
+              const result = await res.json();
+              console.log('Hasil simpan ke cart:', result);
+          } else {
+              console.warn('❗ Produk tidak cocok ditemukan di database:', product.name);
+          }
+      } catch (error) {
+          console.error('Gagal menyimpan ke database:', error);
+      }
+  }
 
-    hamburger.addEventListener('click', function () {
-        this.classList.toggle('active');
-        navLinks.classList.toggle('active');
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
 
-        const bars = this.querySelectorAll('.bar');
-        if (this.classList.contains('active')) {
-            bars[0].style.transform = 'translateY(8px) rotate(45deg)';
-            bars[1].style.opacity = '0';
-            bars[2].style.transform = 'translateY(-8px) rotate(-45deg)';
-        } else {
-            bars[0].style.transform = 'translateY(0) rotate(0)';
-            bars[1].style.opacity = '1';
-            bars[2].style.transform = 'translateY(0) rotate(0)';
-        }
-    });
+  hamburger.addEventListener('click', function () {
+      this.classList.toggle('active');
+      navLinks.classList.toggle('active');
 
-    const themeToggle = document.getElementById('themeToggle');
+      const bars = this.querySelectorAll('.bar');
+      if (this.classList.contains('active')) {
+          bars[0].style.transform = 'translateY(8px) rotate(45deg)';
+          bars[1].style.opacity = '0';
+          bars[2].style.transform = 'translateY(-8px) rotate(-45deg)';
+      } else {
+          bars[0].style.transform = 'translateY(0) rotate(0)';
+          bars[1].style.opacity = '1';
+          bars[2].style.transform = 'translateY(0) rotate(0)';
+      }
+  });
 
-    if (themeToggle) {
-        if (localStorage.getItem('dark-mode') === 'enabled') {
-            document.body.classList.add('dark-mode');
-            themeToggle.textContent = '☀';
-        }
+  const themeToggle = document.getElementById('themeToggle');
 
-        themeToggle.addEventListener('click', function () {
-            document.body.classList.toggle('dark-mode');
+  if (themeToggle) {
+      if (localStorage.getItem('dark-mode') === 'enabled') {
+          document.body.classList.add('dark-mode');
+          themeToggle.textContent = '☀';
+      }
 
-            if (document.body.classList.contains('dark-mode')) {
-                localStorage.setItem('dark-mode', 'enabled');
-                themeToggle.textContent = '☀';
-            } else {
-                localStorage.setItem('dark-mode', 'disabled');
-                themeToggle.textContent = '🌙';
-            }
-        });
-    }
+      themeToggle.addEventListener('click', function () {
+          document.body.classList.toggle('dark-mode');
+
+          if (document.body.classList.contains('dark-mode')) {
+              localStorage.setItem('dark-mode', 'enabled');
+              themeToggle.textContent = '☀';
+          } else {
+              localStorage.setItem('dark-mode', 'disabled');
+              themeToggle.textContent = '🌙';
+          }
+      });
+  }
 });
