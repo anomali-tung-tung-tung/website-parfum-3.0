@@ -100,21 +100,46 @@ async function checkout() {
   cartTotal.textContent = ` ${total.toLocaleString('id-ID')}`;
 });
 
-//checkout
+// === Checkout ===
 function checkout() {
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-  if (cart.length === 0) {
-    alert("Kamu belum memilih barang");
+  const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+  if (cartItems.length === 0) {
+    alert("Keranjang belanja Anda kosong!");
     return;
   }
-
-  alert("Terima kasih telah berbelanja di MAHA PARFUME!");
-  localStorage.removeItem('cart');
-  location.reload();
+  
+  // Show the payment modal
+  document.getElementById('checkout-modal').style.display = 'block';
+  
+  // Update modal content
+  updateModalCart();
 }
 
-// Global functions
+function closeModal() {
+  document.getElementById('checkout-modal').style.display = 'none';
+}
+
+function updateModalCart() {
+  const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+  const modalCartItems = document.getElementById('modal-cart-items');
+  const cartCount = document.getElementById('cart-count');
+  const modalCartTotal = document.getElementById('modal-cart-total');
+  
+  modalCartItems.innerHTML = '';
+  let total = 0;
+  
+  cartItems.forEach(item => {
+    const itemEl = document.createElement('div');
+    itemEl.innerHTML = `<p>${item.name} <span class="price">Rp ${item.price}</span></p>`;
+    modalCartItems.appendChild(itemEl);
+    total += parseInt(item.price.replace(/\./g, ''));
+  });
+  
+  cartCount.textContent = cartItems.length;
+  modalCartTotal.textContent = `Rp ${total.toLocaleString('id-ID')}`;
+}
+
+// === Hapus Item dari Keranjang ===
 function removeItem(index) {
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
   cart.splice(index, 1);
@@ -122,7 +147,7 @@ function removeItem(index) {
   location.reload();
 }
 
-// Hamburger menu logic
+// === Hamburger Menu ===
 document.addEventListener('DOMContentLoaded', function () {
   const hamburger = document.querySelector('.hamburger');
   const navLinks = document.querySelector('.nav-links');
