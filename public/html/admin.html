@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Maha Parfume</title>
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Admin Dashboard</h2>
+    <ul>
+      <li><a href="#products">Produk</a></li>
+      <li><a href="#orders">Pesanan</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <section id="products">
+      <h3>Daftar Produk</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Nama Produk</th>
+            <th>Harga</th>
+            <th>Stok</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="product-list">
+          <!-- Produk akan dimuat di sini -->
+        </tbody>
+      </table>
+    </section>
+
+    <section id="orders">
+      <h3>Pesanan</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>ID Pesanan</th>
+            <th>User</th>
+            <th>Total</th>
+            <th>Status Pembayaran</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="order-list">
+          <!-- Pesanan akan dimuat di sini -->
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <script src="../js/admin.js"></script>
+</body>
+</html>
