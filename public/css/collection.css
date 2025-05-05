@@ -166,108 +166,19 @@ html, body {
 }
 
 /* ======= Footer ======= */
-.footer {
-    background-color: #5d4037;
-    color: #fff;
-    padding: 50px 0 20px;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.footer-section {
-    width: 30%;
-    min-width: 300px;
-    margin-bottom: 30px;
-}
-
-.footer-section h3 {
-    font-size: 1.3rem;
-    margin-bottom: 20px;
-    position: relative;
-    padding-bottom: 10px;
-}
-
-.footer-section h3::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 50px;
-    height: 2px;
-    background-color: #8d6e63;
-}
-
-.footer-section ul {
-    list-style: none;
-}
-
-.footer-section ul li {
-    margin-bottom: 10px;
-}
-
-.footer-section ul li a {
-    color: #d7ccc8;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.footer-section ul li a:hover {
-    color: #fff;
-}
-
-.newsletter-form input {
+footer {
+    background: linear-gradient(to top, #6d4e2f 0%, #c2a07f 30%, #D2B48C 70%, #e0c6a7 100%);
+    padding: 100px 50px 50px 50px;
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: none;
-    border-radius: 4px;
+    color: black;
 }
 
-.newsletter-form button {
-    padding: 10px 20px;
-    background-color: #8d6e63;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.newsletter-form button:hover {
-    background-color: #6d4c41;
-}
-
-.social-icons {
+.footer-container {
     display: flex;
-    gap: 15px;
-    margin-top: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;  
 }
 
-.social-icons a {
-    color: #d7ccc8;
-    font-size: 1.2rem;
-    transition: color 0.3s;
-}
-
-.social-icons a:hover {
-    color: #fff;
-}
-
-.footer-bottom {
-    text-align: center;
-    padding-top: 20px;
-    border-top: 1px solid #8d6e63;
-    margin-top: 20px;
-}
-
-/* Footer Links */
 .footer-links {
     display: flex;
     gap: 50px;
@@ -276,7 +187,6 @@ html, body {
 .footer-links h3 {
     font-size: 16px;
     margin-bottom: 25px;
-    color: black;
 }
 
 .footer-links ul {
@@ -294,18 +204,13 @@ html, body {
 }
 
 .footer-links ul li a:hover {
-    color: #a37a5c;
-}
-
-/* Subscribe Section */
-.subscribe h3 {
     color: black;
 }
 
 .subscribe input {
     padding: 8px;
     width: 200px;
-    border: 1px solid #a37a5c;
+    border: 1px solid #fff;
     border-radius: 5px;
     background: rgba(255, 255, 255, 0.2);
     color: black;
@@ -328,6 +233,7 @@ html, body {
 .subscribe button:hover {
     background: #8b6f4f;
 }
+
 
 /* Responsive Styles */
 @media (max-width: 768px) {
