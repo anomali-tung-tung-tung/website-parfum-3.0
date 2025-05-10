@@ -100,16 +100,20 @@ html, body {
 .description-container {
     max-width: 1200px;
     margin: 4rem auto;
-    padding: 2rem;
+    width: 100%;
+    padding: 5rem;
     background: #fefaf6;
     border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .aroma-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(520px, 1fr));
     gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .aroma-card {
@@ -120,6 +124,36 @@ html, body {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
     transition: transform 0.3s ease;
     background: #fffdfc;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.card-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+.aroma-image {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.text-content {
+    flex: 1;
+}
+
+.aroma-card h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.aroma-card p {
+    margin: 0.3rem 0;
+    line-height: 1.5;
 }
 
 .aroma-card:hover {
@@ -151,13 +185,9 @@ html, body {
     font-size: 1.4rem;
 }
 
-.aroma-card p {
-    margin: 0.5rem 0;
-}
-
 .season-badge {
     display: inline-block;
-    margin-top: 0.8rem;
+    margin-top: 1rem;
     background-color: #f3f3f3;
     padding: 6px 12px;
     border-radius: 20px;
@@ -165,73 +195,106 @@ html, body {
     font-weight: 500;
 }
 
-/* ======= Footer ======= */
-footer {
-    background: linear-gradient(to top, #6d4e2f 0%, #c2a07f 30%, #D2B48C 70%, #e0c6a7 100%);
-    padding: 100px 50px 50px 50px;
-    width: 100%;
-    color: black;
+/* Footer Styles */
+.footer {
+    background-color: #5d4037;
+    color: #fff;
+    padding: 50px 0 20px;
 }
 
-.footer-container {
+.footer-content {
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;  
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-.footer-links {
-    display: flex;
-    gap: 50px;
+.footer-section {
+    width: 30%;
+    min-width: 300px;
+    margin-bottom: 30px;
 }
 
-.footer-links h3 {
-    font-size: 16px;
-    margin-bottom: 25px;
+.footer-section h3 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
 }
 
-.footer-links ul {
+.footer-section h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #8d6e63;
+}
+
+.footer-section ul {
     list-style: none;
 }
 
-.footer-links ul li {
-    margin-bottom: 5px;
+.footer-section ul li {
+    margin-bottom: 10px;
 }
 
-.footer-links ul li a {
+.footer-section ul li a {
+    color: #d7ccc8;
     text-decoration: none;
-    color: black;
     transition: color 0.3s;
 }
 
-.footer-links ul li a:hover {
-    color: black;
+.footer-section ul li a:hover {
+    color: #fff;
 }
 
-.subscribe input {
-    padding: 8px;
-    width: 200px;
-    border: 1px solid #fff;
-    border-radius: 5px;
-    background: rgba(255, 255, 255, 0.2);
-    color: black;
+.newsletter-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 4px;
 }
 
-.subscribe input::placeholder {
-    color: black;
-}
-
-.subscribe button {
-    padding: 8px 10px;
-    background: #6d4e2f;
+.newsletter-form button {
+    padding: 10px 20px;
+    background-color: #8d6e63;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background-color 0.3s;
 }
 
-.subscribe button:hover {
-    background: #8b6f4f;
+.newsletter-form button:hover {
+    background-color: #6d4c41;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-icons a {
+    color: #d7ccc8;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #fff;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #8d6e63;
+    margin-top: 20px;
 }
 
 
@@ -275,6 +338,32 @@ footer {
         text-align: center;
     }
 
+    .aroma-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 90%;
+        max-width: 350px;
+        box-sizing: border-box;
+    }
+    .card-content {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .aroma-image {
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+    .text-content {
+        text-align: left;
+        font-size: 0.9rem;
+    }
+    
+    .aroma-content {
+        text-align: left;
+    }
+
     .footer-section {
         width: 100%;
         text-align: center;
@@ -299,4 +388,3 @@ footer {
         margin: 2;
     }
 }
-
