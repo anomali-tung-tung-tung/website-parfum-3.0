@@ -16,6 +16,10 @@ body, html {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 .main-content {
@@ -450,13 +454,14 @@ body, html {
         margin: 0 auto;
         align-items: center;
     }
-    .hero {
-        padding-top: 100px;
-    }
-
+    
     .products {
         flex-wrap: wrap;
         justify-content: center;
+    }
+    
+    main {
+        flex: 1;
     }
 
     .navbar {
@@ -499,16 +504,17 @@ body, html {
     }
     
     .main-content {
-        padding: 20px;
+        padding-top: 100px; /* Memberi ruang untuk navbar fixed */
+        padding-bottom: 100px;
+        height: 900px; /* Memberi ruang untuk footer */
     }
-
     .product-card {
         width: 90%;
         max-width: 300px;
     }
 
     .modal-content {
-        width: 90%;
+        width: 100%;
     }
     .footer-links h3 {
         font-size: 16px;
