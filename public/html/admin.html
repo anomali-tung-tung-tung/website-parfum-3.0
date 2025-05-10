@@ -1,52 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard - Maha Parfume</title>
-  <link rel="stylesheet" href="../css/admin.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard - MAHA PARFUME</title>
+  <link rel="stylesheet" href="../css/admin.css"/>
 </head>
 <body>
   <div class="sidebar">
     <h2>Admin Dashboard</h2>
-    <ul>
-      <li><a href="#products">Produk</a></li>
-      <li><a href="#orders">Pesanan</a></li>
-    </ul>
+    <button id="viewOrdersBtn">View Orders</button>
+    <button id="manageProductsBtn">Manage Products</button>
   </div>
 
   <div class="main-content">
-    <section id="products">
-      <h3>Daftar Produk</h3>
-      <table>
+    <!-- Orders Section -->
+    <section id="ordersSection" class="section hidden">
+      <h2>Orders</h2>
+      <table id="ordersTable">
         <thead>
           <tr>
-            <th>Nama Produk</th>
-            <th>Harga</th>
-            <th>Stok</th>
-            <th>Aksi</th>
+            <th>User</th>
+            <th>Items</th>
+            <th>Total</th>
+            <th>Address</th>
+            <th>Status</th>
+            <th>Created At</th>
           </tr>
         </thead>
-        <tbody id="product-list">
-          <!-- Produk akan dimuat di sini -->
+        <tbody>
+          <!-- Orders data here -->
         </tbody>
       </table>
     </section>
 
-    <section id="orders">
-      <h3>Pesanan</h3>
-      <table>
+    <!-- Products Section -->
+    <section id="productsSection" class="section hidden">
+      <h2>Manage Products</h2>
+      <form id="addProductForm">
+        <h3>Add New Product</h3>
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="text" name="description" placeholder="Description" required>
+        <input type="number" name="price" placeholder="Price" required>
+        <input type="text" name="imageUrl" placeholder="Image URL" required>
+        <input type="number" name="stock" placeholder="Stock" required>
+        <input type="text" name="category" placeholder="Category" required>
+        <button type="submit">Add Product</button>
+      </form>
+
+      <h3>Product List</h3>
+      <table id="productsTable">
         <thead>
           <tr>
-            <th>ID Pesanan</th>
-            <th>User</th>
-            <th>Total</th>
-            <th>Status Pembayaran</th>
-            <th>Aksi</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Category</th>
+            <th>Actions</th>
           </tr>
         </thead>
-        <tbody id="order-list">
-          <!-- Pesanan akan dimuat di sini -->
+        <tbody>
+          <!-- Products data here -->
         </tbody>
       </table>
     </section>
