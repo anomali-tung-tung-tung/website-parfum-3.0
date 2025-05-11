@@ -83,8 +83,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Tambahkan item ke cart backend dan lokal
-    async function addToCart(productCard) {
+    // Tambahkan item ke cart lokal
+    function addToCart(productCard) {
         const product = getProductData(productCard);
         if (!product) {
             alert('Gagal mendapatkan data produk');
@@ -94,28 +94,10 @@ document.addEventListener('DOMContentLoaded', function () {
         try {
             // Simpan lokal dulu
             addToLocalCart(product);
-
-            // Kirim ke backend
-            const baseURL = location.hostname === 'localhost' ? 'http://localhost:5000' : '';
-            const response = await fetch(`${baseURL}/api/cart/${userId}/add`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    productId: product.id,
-                    quantity: 1
-                })
-            });
-
-            if (!response.ok) {
-                throw new Error('Gagal menyimpan ke server');
-            }
-
             showPopup();
         } catch (error) {
             console.error('Error:', error);
-            showPopup(); // tetap tampilkan popup meski gagal ke backend
+            showPopup(); // tetap tampilkan popup meski gagal
         }
     }
 

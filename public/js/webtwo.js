@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const shopNowBtn = document.querySelector('.shop-now-btn');
     if (shopNowBtn) {
         shopNowBtn.addEventListener('click', function() {
-            window.location.href = "/html/products.html";
+            window.location.href = "/public/html/products.html";  // Mengarahkan ke halaman product.html
         });
     }
     
@@ -70,58 +70,41 @@ document.addEventListener('DOMContentLoaded', function() {
         video.play().catch(error => console.log("Autoplay failed:", error));
     }
 
-    // Collection card hover effects (existing functionality)
+    // Collection card hover effects
     const collectionCards = document.querySelectorAll('.collection-card');
     const collectionBackground = document.querySelector('.collection-section-background');
 
-if (collectionCards.length && collectionBackground) {
-    collectionCards.forEach(card => {
-        card.addEventListener('mouseenter', function () {
-            if (this.classList.contains('card-pragos')) {
-                collectionBackground.style.backgroundColor = '#e8f5e9';
-            } else if (this.classList.contains('card-santanos')) {
-                collectionBackground.style.backgroundColor = '#efebe9';
-            } else if (this.classList.contains('card-alfatos')) {
-                collectionBackground.style.backgroundColor = '#fce4ec';
-            } else if (this.classList.contains('card-hibbos')) {
-                collectionBackground.style.backgroundColor = '#f3e5f5';
-            } else if (this.classList.contains('card-labratos')) {
-                collectionBackground.style.backgroundColor = '#d7ccc8';
-            } else if (this.classList.contains('card-arriopus')) {
-                collectionBackground.style.backgroundColor = '#fff3e0';
-            } else if (this.classList.contains('card-walidous')) {
-                collectionBackground.style.backgroundColor = '#f1f8e9';
-            } else if (this.classList.contains('card-dewwy')) {
-                collectionBackground.style.backgroundColor = '#e1f5fe';
-            } else {
-                collectionBackground.style.backgroundColor = 'transparent'; // fallback
-            }
-        });
+    if (collectionCards.length && collectionBackground) {
+        collectionCards.forEach(card => {
+            card.addEventListener('mouseenter', function () {
+                if (this.classList.contains('card-pragos')) {
+                    collectionBackground.style.backgroundColor = '#e8f5e9';
+                } else if (this.classList.contains('card-santanos')) {
+                    collectionBackground.style.backgroundColor = '#efebe9';
+                } else if (this.classList.contains('card-alfatos')) {
+                    collectionBackground.style.backgroundColor = '#fce4ec';
+                } else if (this.classList.contains('card-hibbos')) {
+                    collectionBackground.style.backgroundColor = '#f3e5f5';
+                } else if (this.classList.contains('card-labratos')) {
+                    collectionBackground.style.backgroundColor = '#d7ccc8';
+                } else if (this.classList.contains('card-arriopus')) {
+                    collectionBackground.style.backgroundColor = '#fff3e0';
+                } else if (this.classList.contains('card-walidous')) {
+                    collectionBackground.style.backgroundColor = '#f1f8e9';
+                } else if (this.classList.contains('card-dewwy')) {
+                    collectionBackground.style.backgroundColor = '#e1f5fe';
+                } else {
+                    collectionBackground.style.backgroundColor = 'transparent'; // fallback
+                }
+            });
 
-        card.addEventListener('mouseleave', function () {
-            collectionBackground.style.backgroundColor = 'transparent';
-        });
-    });
-}
-
-
-    // Learn More button interactions (existing functionality)
-    const params = new URLSearchParams(window.location.search);
-    const product = params.get('product'); // akan jadi "pragos"
-
-    /*const learnMoreButtons = document.querySelectorAll('.learn-more');
-    if (learnMoreButtons.length) {
-        learnMoreButtons.forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                const card = this.closest('.collection-card');
-                const title = card.querySelector('h3').textContent;
-                console.log(`Learn more about ${title}`);
+            card.addEventListener('mouseleave', function () {
+                collectionBackground.style.backgroundColor = 'transparent';
             });
         });
-    }*/
+    }
 
-    // Auth Modal Functionality (new functionality)
+    // Auth Modal Functionality
     const userIcon = document.querySelector('.fa-user')?.parentElement;
     const authModal = document.getElementById('authModal');
     const closeModal = document.querySelector('.close-modal');
