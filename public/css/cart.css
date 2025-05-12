@@ -285,7 +285,7 @@ body.dark-mode {
 
 /* Checkout Modal */
 .checkout-modal {
-  display: none;
+
   position: fixed;
   top: 0;
   left: 0;
@@ -293,11 +293,21 @@ body.dark-mode {
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
   z-index: 999;
-
+  overflow-y: auto;
+  padding-top: 100px;
+  box-sizing: border-box;
   /* Centering modal */
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+}
+
+.checkout-modal.active {
+  display: flex;
+}
+
+#checkout-modal.hidden {
+  display: none;
 }
 
 .checkout-content {
@@ -306,8 +316,11 @@ body.dark-mode {
   padding: 30px;
   width: 90%;
   max-width: 400px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
   text-align: center;
   position: relative;
+  margin: auto;
+  overflow-y: auto;
 }
 
 .dark-mode .checkout-content {
@@ -414,6 +427,8 @@ body.dark-mode {
   opacity: 0.9;
 }
 
+
+
 /* Responsive Styles */
 @media (max-width: 768px) {
   .navbar {
@@ -489,6 +504,15 @@ body.dark-mode {
 
   .cart-summary button {
     width: 100%;
+  }
+
+  .checkout-modal {
+    padding-top: 90px;
+  }
+
+  .checkout-content {
+    margin-top: 50px;
+    max-height: calc(100vh - 70px);
   }
 }
 

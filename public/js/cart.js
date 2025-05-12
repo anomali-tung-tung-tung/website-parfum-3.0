@@ -1,3 +1,11 @@
+document.getElementById("checkout-btn").addEventListener("click", function () {
+  document.getElementById("checkout-modal").classList.remove("hidden");
+});
+
+function closeModal() {
+  document.getElementById("checkout-modal").classList.add("hidden");
+}
+
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
   // Load cart items
